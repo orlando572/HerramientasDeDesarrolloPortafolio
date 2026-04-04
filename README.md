@@ -34,8 +34,8 @@ Aquí se almacenan:
 
 ## Contenido por Semanas
 
-- **Semana 1**: [Título breve] → [Enlace a la carpeta o resumen]
-- **Semana 2**: ...
+- **Semana 1**: Introducción al control de versiones
+- **Semana 2**: Solución de control de versiones
 - ...
 
 ---
