@@ -1,4 +1,4 @@
-## Solución de Control de Versiones con Git - Semana 3
+## Manejo de Repositorios - Semana 3
 
 ### ¿Para qué te servirá en tu vida académica o profesional saber usar Git y manejar ramas?
 Dominar Git y el manejo de ramas te permite trabajar de forma organizada en proyectos grandes, colaborar eficientemente con otras personas, experimentar nuevas funcionalidades sin riesgo y mantener un historial de cambios claro y profesional. Es una habilidad muy valorada en entornos académicos y en la industria del desarrollo de software.
