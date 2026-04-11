@@ -1,4 +1,4 @@
-## Solución de Control de Versiones con Git
+## Solución de Control de Versiones con Git - Semana 2
 
 ### ¿Para qué me sirve aprender a instalar, configurar y usar los comandos básicos de Git?
 Aprender Git me permite controlar el historial de cambios de mis proyectos, trabajar de forma segura, colaborar con otras personas y recuperar versiones anteriores en caso de errores.
