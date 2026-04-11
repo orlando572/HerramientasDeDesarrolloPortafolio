@@ -1,4 +1,4 @@
-## Introducción al Control de Versiones
+## Introducción al Control de Versiones - Semana 1
 
 El **control de versiones** es un sistema que permite **registrar** y **hacer seguimiento** de cada cambio realizado en tus archivos a lo largo del tiempo.
 
