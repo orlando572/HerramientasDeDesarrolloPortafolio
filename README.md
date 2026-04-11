@@ -28,7 +28,7 @@ Aquí se almacenan:
 
 - Git y GitHub
 - Markdown
-- 
+- Kotlin
 
 ---
 
@@ -36,7 +36,7 @@ Aquí se almacenan:
 
 - **Semana 1**: Introducción al control de versiones
 - **Semana 2**: Solución de control de versiones
-- ...
+- **Semana 3**: Manejo de Repositorios
 
 ---
 
