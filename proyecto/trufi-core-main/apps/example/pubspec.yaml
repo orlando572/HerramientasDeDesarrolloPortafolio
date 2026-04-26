@@ -42,15 +42,23 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  # POI Layers assets
+  # Assets
   assets:
+    # Mapa offline de Arequipa (el más importante)
+    - assets/offline/arequipa.mbtiles
+    - assets/offline/arequipa-detailed.mbtiles
+
+    # POI Layers
     - assets/pois/
-    # Offline maps assets
+
+    # Offline maps assets (estilos y fuentes)
     - assets/offline/
     - assets/offline/styles/osm-bright/
     - assets/offline/styles/osm-liberty/
     - assets/offline/styles/dark-matter/
     - assets/offline/styles/fiord-color/
+
+    # Fuentes
     - assets/offline/fonts/OpenSansRegular/
     - assets/offline/fonts/OpenSansBold/
     - assets/offline/fonts/OpenSansItalic/
@@ -63,5 +71,6 @@ flutter:
     - assets/offline/fonts/MetropolisMediumItalic/
     - assets/offline/fonts/NotoSansRegular/
     - assets/offline/fonts/NotoSansItalic/
-    # Offline routing data (GTFS)
+
+    # Offline routing data (GTFS) - lo dejamos por si más adelante agregas rutas
     - assets/routing/
