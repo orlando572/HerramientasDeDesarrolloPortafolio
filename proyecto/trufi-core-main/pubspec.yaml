@@ -1,0 +1,76 @@
+name: trufi_core_mono
+environment:
+  sdk: ^3.10.0
+
+workspace:
+  - apps/example
+
+  # Core Packages
+  - packages/trufi_core_interfaces
+  - packages/trufi_core_utils
+  - packages/trufi_core_base_widgets
+  - packages/trufi_core_custom_material
+  - packages/trufi_core_maps
+  - packages/trufi_core_planner
+  - packages/trufi_core_routing
+  - packages/trufi_core_routing_ui
+  - packages/trufi_core_search_locations
+  - packages/trufi_core_ui
+  - packages/trufi_core_notifications
+
+  # Screen Packages
+  - packages/screens/trufi_core_about
+  - packages/screens/trufi_core_fares
+  - packages/screens/trufi_core_feedback
+  - packages/screens/trufi_core_home_screen
+  - packages/screens/trufi_core_saved_places
+  - packages/screens/trufi_core_settings
+  - packages/screens/trufi_core_transport_list
+
+  # Navigation Package
+  - packages/trufi_core_navigation
+
+  # POI Layers
+  - packages/trufi_core_poi_layers
+
+dev_dependencies:
+  melos: ^7.3.0
+  flutter_lints: ^6.0.0
+
+melos:
+  scripts:
+    analyze:
+      run: flutter analyze --no-fatal-infos
+      description: Run Flutter analyze on all packages
+
+    ci:analyze:
+      run: flutter analyze --no-fatal-infos --no-fatal-warnings 
+      exec:
+        concurrency: 1
+
+
+    format:
+      run: dart format .
+      description: Format all Dart files
+
+    test:
+      exec: flutter test
+      description: Run tests for all packages
+      packageFilters:
+        dirExists: test
+
+    build:
+      name: Generate Build files
+      run: dart run build_runner build --delete-conflicting-outputs
+      exec:
+        concurrency: 6
+      packageFilters:
+        dependsOn: build_runner
+
+    l10n:
+      name: Generate Translation files
+      run: flutter gen-l10n
+      exec:
+        concurrency: 1
+      packageFilters:
+        dependsOn: flutter_localizations

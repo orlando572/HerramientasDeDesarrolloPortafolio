@@ -1,0 +1,42 @@
+{
+  "@@locale": "en",
+  "menuTransportList": "Routes",
+  "searchRoutes": "Search routes",
+  "noRoutesFound": "No routes found",
+  "shareRoute": "Share route",
+  "stops": "{count} stops",
+  "@stops": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "routeNotFound": "Route not found",
+  "@routeNotFound": {
+    "description": "Error title when route cannot be loaded"
+  },
+  "routeLoadError": "The route could not be loaded",
+  "@routeLoadError": {
+    "description": "Error message when route fails to load"
+  },
+  "pullDownToRefresh": "Pull down to refresh",
+  "tryDifferentSearch": "Try a different search term",
+  "buttonGoBack": "Go back",
+  "@buttonGoBack": {
+    "description": "Go back button label"
+  },
+  "routeCount": "{count} {count, plural, =1{route} other{routes}}",
+  "@routeCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "labelDistance": "Distance",
+  "labelStops": "Stops",
+  "labelMode": "Mode",
+  "noStopsAvailable": "No stops available",
+  "loadingRoute": "Loading route..."
+}

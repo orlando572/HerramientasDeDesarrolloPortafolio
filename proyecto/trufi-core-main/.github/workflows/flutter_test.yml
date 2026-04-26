@@ -1,0 +1,38 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Flutter PR analyze
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the project
+        uses: actions/checkout@v2
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: "17.x"
+      - name: Install Flutter Actions
+        uses: subosito/flutter-action@v1
+        with:
+          flutter-version: "3.41.5"
+      - name: Bootstrap with Melos
+        uses: bluefireteam/melos-action@v3
+      - name: Run Flutter Analyze
+        run: melos ci:analyze
+      - name: Translation Check
+        run: |
+          melos run l10n --no-select
+          # Stage changes so git diff includes newly created files
+          git add -A
+          # Fail if there are any changes in the staged area
+          git diff --staged --exit-code || (echo "Error: Localization files are out of sync. Run 'melos run l10n' locally and commit the changes." && exit 1)

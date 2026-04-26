@@ -1,0 +1,6 @@
+arb-dir: lib/l10n
+template-arb-file: feedback_en.arb
+output-localization-file: feedback_localizations.dart
+output-class: FeedbackLocalizations
+nullable-getter: false
+
