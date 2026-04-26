@@ -12,12 +12,12 @@ import 'package:trufi_core_navigation/trufi_core_navigation.dart';
 import 'package:trufi_core_poi_layers/trufi_core_poi_layers.dart';
 import 'package:trufi_core_routing/trufi_core_routing.dart'
     show
-        RoutingEngineManager,
-        IRoutingProvider,
-        Otp28RoutingProvider,
-        Otp15RoutingProvider,
-        TrufiPlannerProvider,
-        TrufiPlannerConfig;
+    RoutingEngineManager,
+    IRoutingProvider,
+    Otp28RoutingProvider,
+    Otp15RoutingProvider,
+    TrufiPlannerProvider,
+    TrufiPlannerConfig;
 import 'package:trufi_core_saved_places/trufi_core_saved_places.dart';
 import 'package:trufi_core_search_locations/trufi_core_search_locations.dart';
 import 'package:trufi_core_settings/trufi_core_settings.dart';
@@ -27,79 +27,53 @@ import 'package:trufi_core_utils/trufi_core_utils.dart' show OverlayManager;
 
 // ============ CONFIGURATION ============
 const _photonUrl = 'https://photon.trufi.app';
-const _defaultCenter = LatLng(-17.3988354, -66.1626903);
-const _appName = 'Trufi App';
+const _defaultCenter = LatLng(-16.409, -71.537); // Arequipa
+const _appName = 'RutaLista AQP';
 const _deepLinkScheme = 'trufiapp';
-const _cityName = 'Cochabamba';
-const _countryName = 'Bolivia';
+const _cityName = 'Arequipa';
+const _countryName = 'Perú';
 const _emailContact = 'info@trufi-association.org';
 const _feedbackUrl = 'https://www.trufi-association.org/feedback/';
 const _facebookUrl = 'https://facebook.com/trufiapp';
 const _xTwitterUrl = 'https://x.com/trufiapp';
 const _instagramUrl = 'https://instagram.com/trufiapp';
 
-// Routing engines (similar to map engines)
+// Motores de Ruta
 final List<IRoutingProvider> _routingEngines = [
-  // Offline routing via GTFS (mobile) / online via server (web)
   if (!kIsWeb)
     TrufiPlannerProvider(
       config: const TrufiPlannerConfig.local(
-        gtfsAsset: 'assets/routing/cochabamba.gtfs.zip',
+        gtfsAsset: 'assets/routing/arequipa.gtfs.zip',
       ),
     ),
-  if (kIsWeb)
+];
+
+  /*if (kIsWeb)
     TrufiPlannerProvider(
       config: const TrufiPlannerConfig.remote(
         serverUrl: 'https://planner.trufi.app',
       ),
     ),
-  // Online routing via OTP (dev servers)
   Otp28RoutingProvider(
     endpoint: 'https://otp281.trufi.app',
-    displayName: 'OTP 2.8.1',
+    displayName: 'OTP Arequipa High-Res',
   ),
   Otp15RoutingProvider(
     endpoint: 'https://otp150.trufi.app',
-    displayName: 'OTP 1.5.0',
+    displayName: 'OTP Standard',
   ),
-];
+];*/
 
-// Map engines
+// Motores de Mapa
 final List<ITrufiMapEngine> _mapEngines = [
-  // Offline maps - disabled on web
-  if (!kIsWeb) ...[
+  // 1. MODO OFFLINE
+  if (!kIsWeb)
     OfflineMapLibreEngine(
-      engineId: 'offline_osm_liberty',
-      displayName: 'Offline Liberty',
-      displayDescription: 'Mapa offline estándar',
+      engineId: 'offline_arequipa_V4',
+      displayName: 'Arequipa Offline',
+      displayDescription: 'Mapa local con máximo detalle',
       config: OfflineMapConfig(
-        mbtilesAsset: 'assets/offline/cochabamba.mbtiles',
-        styleAsset: 'assets/offline/styles/osm-liberty/style.json',
-        spritesAssetDir: 'assets/offline/styles/osm-liberty/',
-        fontsAssetDir: 'assets/offline/fonts/',
-        fontMapping: {
-          'RobotoRegular': 'Roboto Regular',
-          'RobotoMedium': 'Roboto Medium',
-          'RobotoCondensedItalic': 'Roboto Condensed Italic',
-        },
-        fontRanges: [
-          '0-255',
-          '256-511',
-          '512-767',
-          '768-1023',
-          '1024-1279',
-          '1280-1535',
-          '8192-8447',
-          '8448-8703',
-        ],
-      ),
-    ),
-    OfflineMapLibreEngine(
-      engineId: 'offline_osm_bright',
-      displayName: 'Offline Bright',
-      displayDescription: 'Mapa offline claro',
-      config: OfflineMapConfig(
-        mbtilesAsset: 'assets/offline/cochabamba.mbtiles',
+        mbtilesAsset: 'assets/offline/arequipa.mbtiles',
         styleAsset: 'assets/offline/styles/osm-bright/style.json',
         spritesAssetDir: 'assets/offline/styles/osm-bright/',
         fontsAssetDir: 'assets/offline/fonts/',
@@ -109,128 +83,36 @@ final List<ITrufiMapEngine> _mapEngines = [
           'OpenSansItalic': 'Open Sans Italic',
         },
         fontRanges: [
-          '0-255',
-          '256-511',
-          '512-767',
-          '768-1023',
-          '1024-1279',
-          '1280-1535',
-          '8192-8447',
-          '8448-8703',
+          '0-255', '256-511', '512-767', '768-1023',
+          '1024-1279', '1280-1535',
         ],
       ),
     ),
-    OfflineMapLibreEngine(
-      engineId: 'offline_dark_matter',
-      displayName: 'Offline Dark Matter',
-      displayDescription: 'Mapa offline oscuro',
-      config: OfflineMapConfig(
-        mbtilesAsset: 'assets/offline/cochabamba.mbtiles',
-        styleAsset: 'assets/offline/styles/dark-matter/style.json',
-        spritesAssetDir: 'assets/offline/styles/dark-matter/',
-        fontsAssetDir: 'assets/offline/fonts/',
-        fontMapping: {
-          'MetropolisLight': 'Metropolis Light',
-          'MetropolisLightItalic': 'Metropolis Light Italic',
-          'MetropolisRegular': 'Metropolis Regular',
-          'MetropolisMediumItalic': 'Metropolis Medium Italic',
-          'NotoSansRegular': 'Noto Sans Regular',
-          'NotoSansItalic': 'Noto Sans Italic',
-        },
-        fontRanges: [
-          '0-255',
-          '256-511',
-          '512-767',
-          '768-1023',
-          '1024-1279',
-          '1280-1535',
-          '8192-8447',
-          '8448-8703',
-        ],
-      ),
-    ),
-    OfflineMapLibreEngine(
-      engineId: 'offline_fiord_color',
-      displayName: 'Offline Fiord Color',
-      displayDescription: 'Mapa offline colorido',
-      config: OfflineMapConfig(
-        mbtilesAsset: 'assets/offline/cochabamba.mbtiles',
-        styleAsset: 'assets/offline/styles/fiord-color/style.json',
-        spritesAssetDir: 'assets/offline/styles/fiord-color/',
-        fontsAssetDir: 'assets/offline/fonts/',
-        fontMapping: {
-          'MetropolisLight': 'Metropolis Light',
-          'MetropolisLightItalic': 'Metropolis Light Italic',
-          'MetropolisRegular': 'Metropolis Regular',
-          'MetropolisMediumItalic': 'Metropolis Medium Italic',
-          'NotoSansRegular': 'Noto Sans Regular',
-          'NotoSansItalic': 'Noto Sans Italic',
-        },
-        fontRanges: [
-          '0-255',
-          '256-511',
-          '512-767',
-          '768-1023',
-          '1024-1279',
-          '1280-1535',
-          '8192-8447',
-          '8448-8703',
-        ],
-      ),
-    ),
-  ],
-  // Online maps
-  const MapLibreEngine(
-    engineId: 'osm_bright',
-    styleString: 'https://maps.trufi.app/styles/osm-bright/style.json',
-    displayName: 'OSM Bright',
-    displayDescription: 'Mapa claro',
-  ),
+
+  // 2. MODO ONLINE - CLARO
   const MapLibreEngine(
     engineId: 'osm_liberty',
     styleString: 'https://maps.trufi.app/styles/osm-liberty/style.json',
-    displayName: 'OSM Liberty',
-    displayDescription: 'Mapa estándar',
+    displayName: 'Mapa Detallado',
+    displayDescription: 'Incluye más puntos de interés',
   ),
+
+  // 3. MODO ONLINE - OSCURO
   const MapLibreEngine(
-    engineId: 'dark_matter',
+    engineId: 'osm_dark',
     styleString: 'https://maps.trufi.app/styles/dark-matter/style.json',
-    displayName: 'Dark Matter',
-    displayDescription: 'Mapa oscuro',
-  ),
-  const MapLibreEngine(
-    engineId: 'fiord_color',
-    styleString: 'https://maps.trufi.app/styles/fiord-color/style.json',
-    displayName: 'Fiord Color',
-    displayDescription: 'Mapa colorido',
+    displayName: 'Modo Noche',
+    displayDescription: 'Ideal para poca luz',
   ),
 ];
-// ========================================
 
 void main() {
   runTrufiApp(
     AppConfiguration(
       appName: _appName,
       deepLinkScheme: _deepLinkScheme,
-      defaultLocale: Locale('es'),
+      defaultLocale: const Locale('es'),
       themeConfig: const TrufiThemeConfig(),
-      socialMediaLinks: const [
-        SocialMediaLink(
-          url: _facebookUrl,
-          icon: Icons.facebook,
-          label: 'Facebook',
-        ),
-        SocialMediaLink(
-          url: _xTwitterUrl,
-          icon: Icons.close,
-          label: 'X (Twitter)',
-        ),
-        SocialMediaLink(
-          url: _instagramUrl,
-          icon: Icons.camera_alt_outlined,
-          label: 'Instagram',
-        ),
-      ],
       providers: [
         ChangeNotifierProvider(
           create: (_) => MapEngineManager(
@@ -245,8 +127,7 @@ void main() {
           create: (_) => OverlayManager(
             managers: [
               OnboardingManager(
-                overlayBuilder: (onComplete) =>
-                    OnboardingSheet(onComplete: onComplete),
+                overlayBuilder: (onComplete) => OnboardingSheet(onComplete: onComplete),
               ),
               PrivacyConsentManager(
                 overlayBuilder: (onAccept, onDecline) => PrivacyConsentSheet(
@@ -290,28 +171,14 @@ void main() {
         TransportListTrufiScreen(),
         FaresTrufiScreen(
           config: FaresConfig(
-            currency: 'Bs.',
-            lastUpdated: DateTime(2024, 1, 15),
+            currency: 'S/.',
+            lastUpdated: DateTime(2026, 4, 16),
             fares: [
               const FareInfo(
-                transportType: 'Trufi',
+                transportType: 'Bus',
                 icon: Icons.directions_bus,
-                regularFare: '2.00',
-                studentFare: '1.50',
-                seniorFare: '1.00',
-              ),
-              const FareInfo(
-                transportType: 'Micro',
-                icon: Icons.airport_shuttle,
-                regularFare: '1.50',
-                studentFare: '1.00',
-                seniorFare: '0.75',
-              ),
-              const FareInfo(
-                transportType: 'Minibus',
-                icon: Icons.directions_bus_filled,
-                regularFare: '2.50',
-                studentFare: '2.00',
+                regularFare: '1.30',
+                studentFare: '0.50',
               ),
             ],
           ),
