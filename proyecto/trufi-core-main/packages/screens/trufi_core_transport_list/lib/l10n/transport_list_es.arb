@@ -1,0 +1,33 @@
+{
+  "@@locale": "es",
+  "menuTransportList": "Rutas",
+  "searchRoutes": "Buscar rutas",
+  "noRoutesFound": "No se encontraron rutas",
+  "shareRoute": "Compartir ruta",
+  "stops": "{count} paradas",
+  "@stops": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "pullDownToRefresh": "Desliza hacia abajo para actualizar",
+  "tryDifferentSearch": "Intenta con otro término de búsqueda",
+  "routeNotFound": "Ruta no encontrada",
+  "routeLoadError": "No se pudo cargar la ruta",
+  "buttonGoBack": "Volver",
+  "routeCount": "{count} rutas",
+  "@routeCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "labelDistance": "Distancia",
+  "labelStops": "Paradas",
+  "labelMode": "Modo",
+  "noStopsAvailable": "Sin paradas disponibles",
+  "loadingRoute": "Cargando ruta..."
+}

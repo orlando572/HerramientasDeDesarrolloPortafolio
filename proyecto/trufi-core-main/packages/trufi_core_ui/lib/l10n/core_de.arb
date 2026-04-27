@@ -1,0 +1,23 @@
+{
+  "@@locale": "de",
+
+  "appName": "Trufi App",
+  "appLoading": "Laden...",
+  "navHome": "Startseite",
+  "navSearch": "Suchen",
+  "navFeedback": "Feedback",
+  "navSettings": "Einstellungen",
+  "navAbout": "Über",
+  "actionSave": "Speichern",
+  "actionCancel": "Abbrechen",
+  "actionConfirm": "Bestätigen",
+  "errorGeneric": "Ein Fehler ist aufgetreten",
+  "errorNetwork": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung.",
+  "errorInitialization": "App konnte nicht initialisiert werden",
+  "actionRetry": "Erneut versuchen",
+  "errorPageNotFound": "Seite nicht gefunden",
+  "actionGoHome": "Zur Startseite",
+  "titleError": "Fehler",
+  "unreadCount": "{count} ungelesen",
+  "markAllAsRead": "Alle als gelesen markieren"
+}
